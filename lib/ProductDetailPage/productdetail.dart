@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:zazu/ProductDetailPage/rectangle.dart';
 import 'package:zazu/styles/Styles.dart';
 
+import '../ProductViewImage/ProductViewImage.dart';
 import '../Providers/Productdetailpageprovider/ProductDetailPageProvider.dart';
 
 class ProductDetailPage extends StatelessWidget {
@@ -12,7 +13,6 @@ class ProductDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
         backgroundColor: white,
         appBar: AppBar(
@@ -34,7 +34,7 @@ class ProductDetailPage extends StatelessWidget {
                 color: black,
               ),
               onPressed: () {
-                // do something
+
               },
             )
           ],
@@ -46,41 +46,48 @@ class ProductDetailPage extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Container(
-                      width: w,
-                      child: Carousel(
-                        height: w + 100,
-                        indicatorBarColor: Colors.white,
-                        autoScrollDuration: const Duration(seconds: 2),
-                        animationPageDuration:
-                            const Duration(milliseconds: 500),
-                        activateIndicatorColor: Colors.pink.shade100,
-                        animationPageCurve: Curves.bounceInOut,
-                        indicatorBarHeight: 50,
-                        indicatorHeight: 10,
-                        indicatorWidth: 10,
-                        unActivatedIndicatorColor: Colors.grey.shade100,
-                        stopAtEnd: true,
-                        autoScroll: true,
-                        // widgets
-                        items: [
-                          SizedBox(
-                            width: w,
-                            child: Image.asset('assets/images/img_2.png',
-                                fit: BoxFit.cover),
-                          ),
-                          SizedBox(
-                            width: w,
-                            child: Image.asset('assets/images/img_2.png',
-                                fit: BoxFit.cover),
-                          ),
-                          SizedBox(
-                            width: w,
-                            child: Image.asset('assets/images/img_2.png',
-                                fit: BoxFit.cover),
-                          )
-                        ],
-                      )),
+                  InkWell(onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ProductViewimage()),
+                    );
+                  },
+                    child: Container(
+                        width: w,
+                        child: Carousel(
+                          height: w + 100,
+                          indicatorBarColor: Colors.white,
+                          autoScrollDuration: const Duration(seconds: 2),
+                          animationPageDuration:
+                              const Duration(milliseconds: 500),
+                          activateIndicatorColor: Colors.pink.shade100,
+                          animationPageCurve: Curves.bounceInOut,
+                          indicatorBarHeight: 50,
+                          indicatorHeight: 10,
+                          indicatorWidth: 10,
+                          unActivatedIndicatorColor: Colors.grey.shade100,
+                          stopAtEnd: true,
+                          autoScroll: true,
+                          // widgets
+                          items: [
+                            SizedBox(
+                              width: w,
+                              child: Image.asset('assets/images/img_2.png',
+                                  fit: BoxFit.cover),
+                            ),
+                            SizedBox(
+                              width: w,
+                              child: Image.asset('assets/images/img_2.png',
+                                  fit: BoxFit.cover),
+                            ),
+                            SizedBox(
+                              width: w,
+                              child: Image.asset('assets/images/img_2.png',
+                                  fit: BoxFit.cover),
+                            )
+                          ],
+                        )),
+                  ),
                   Container(
                     width: w,
                     margin: const EdgeInsets.all(15),
