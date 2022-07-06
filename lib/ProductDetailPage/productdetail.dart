@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:zazu/ProductDetailPage/rectangle.dart';
 import 'package:zazu/styles/Styles.dart';
 
+import '../Cart/Cart.dart';
+import '../CommonWidgets/Button.dart';
 import '../ProductViewImage/ProductViewImage.dart';
 import '../Providers/Productdetailpageprovider/ProductDetailPageProvider.dart';
 
@@ -34,7 +36,10 @@ class ProductDetailPage extends StatelessWidget {
                 color: black,
               ),
               onPressed: () {
-
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Cart()),
+                );
               },
             )
           ],
@@ -46,12 +51,14 @@ class ProductDetailPage extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  InkWell(onTap: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const ProductViewimage()),
-                    );
-                  },
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProductViewimage()),
+                      );
+                    },
                     child: Container(
                         width: w,
                         child: Carousel(
@@ -169,8 +176,9 @@ class ProductDetailPage extends StatelessWidget {
                             Rectangles().rectangles(clr: Colors.green),
                           ],
                         ),
-
-const SizedBox(height: 20,),
+                        const SizedBox(
+                          height: 20,
+                        ),
                         Row(
                           children: [
                             Text(
@@ -180,21 +188,25 @@ const SizedBox(height: 20,),
                                   fontS: 17,
                                   color: black),
                             ),
-
-
-
-
-                            Container(width: 150,
+                            Container(
+                              width: 150,
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 5.0),
-                                child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.symmetric(vertical: 5.0),
-                                      child: Container(width: 40,height: 40,
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 5.0),
+                                      child: Container(
+                                          width: 40,
+                                          height: 40,
                                           decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black),
-                                            borderRadius: BorderRadius.circular(8),
+                                            border:
+                                                Border.all(color: Colors.black),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
                                           ),
                                           child: IconButton(
                                               padding: EdgeInsets.zero,
@@ -206,15 +218,20 @@ const SizedBox(height: 20,),
                                     ),
                                     Text(
                                       "${provider.quantity}",
-                                      style: const TextStyle(fontWeight: FontWeight.bold),
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold),
                                     ),
-
                                     Padding(
-                                      padding: const EdgeInsets.symmetric(vertical: 5.0),
-                                      child: Container(width: 40,height: 40,
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 5.0),
+                                      child: Container(
+                                          width: 40,
+                                          height: 40,
                                           decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black),
-                                            borderRadius: BorderRadius.circular(8),
+                                            border:
+                                                Border.all(color: Colors.black),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
                                           ),
                                           child: IconButton(
                                               padding: EdgeInsets.zero,
@@ -224,18 +241,15 @@ const SizedBox(height: 20,),
                                               },
                                               icon: const Icon(Icons.add))),
                                     ),
-
                                   ],
                                 ),
                               ),
                             ),
-
-
                           ],
                         ),
-
-                        const SizedBox(height: 20,),
-
+                        const SizedBox(
+                          height: 20,
+                        ),
                         Row(
                           children: [
                             Text(
@@ -254,11 +268,9 @@ const SizedBox(height: 20,),
                             ),
                           ],
                         ),
-
-
-                        const SizedBox(height: 30,),
-
-
+                        const SizedBox(
+                          height: 30,
+                        ),
                         Text(
                           'Description:',
                           style: Styles().normalS(
@@ -266,37 +278,32 @@ const SizedBox(height: 20,),
                               fontS: 18,
                               color: black),
                         ),
-                        const SizedBox(height: 15,),
-
+                        const SizedBox(
+                          height: 15,
+                        ),
                         Text(
                           'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled iining essentially unchanged. ',
                           style: Styles().normalS(
                               fontW: FontWeight.normal,
                               fontS: 16,
-                              color: black),textDirection: TextDirection.ltr,maxLines: 4,
+                              color: black),
+                          textDirection: TextDirection.ltr,
+                          maxLines: 4,
                         ),
-
-                        const SizedBox(height: 30,),
-                        SizedBox(width: w,
-                          child: FlatButton(
-                              color: primary1,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5.0)),
-                              child: Text(
-                                'ADD TO CART',
-                                style: Styles().normalS(
-                                    fontW: FontWeight.normal,
-                                    fontS: 15,
-                                    color: white),
-                              ),
-                              onPressed: () {
-
-                              }),
-
-
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        SizedBox(
+                          width: w,
+                          child:Button().button(action: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Cart()),
+                            );
+                          }, txt: "ADD TO CART")
 
                         )
-
                       ],
                     ),
                   )

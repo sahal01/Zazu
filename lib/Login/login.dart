@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:zazu/HomePage/homepage.dart';
 import 'package:zazu/Login/SaveButton.dart';
 
+import '../CommonWidgets/Button.dart';
 import '../Providers/loginprovider/LoginProvider.dart';
 import 'Textformfield.dart';
 
@@ -18,7 +19,6 @@ class Login extends StatelessWidget {
 
     return Scaffold(
         backgroundColor: Colors.white,
-
         body: Consumer<LoginProvider>(builder: (context, provider, child) {
           return Padding(
             padding: const EdgeInsets.all(30),
@@ -78,24 +78,27 @@ class Login extends StatelessWidget {
                       const SizedBox(
                         height: 45,
                       ),
-                      SaveButton().save(
-                          validate: () {
-                            if (_formKey.currentState!.validate()) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content: Text('Processing Data')),
+                      SizedBox(
+                        width: w - 24,
+                        child: Button().button(
+                            action: () {
+                              if (_formKey.currentState!.validate()) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text('Processing Data')),
+                                );
 
-                              );
-
-
-                              WidgetsBinding.instance.addPostFrameCallback((_) {
-                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => Home()));
-                              });
-
-
-                            }
-                          },
-                          w: w)
+                                WidgetsBinding.instance
+                                    .addPostFrameCallback((_) {
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) => Home()));
+                                });
+                              }
+                            },
+                            txt: "LOGIN"),
+                      )
                     ],
                   ),
                 ),

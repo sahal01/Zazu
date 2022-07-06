@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:zazu/Login/login.dart';
 
+import '../Changepassword/ChangePassword.dart';
 import '../ProductDetailPage/productdetail.dart';
 import '../Providers/Homeprovider/HomeProvider.dart';
 import '../styles/Styles.dart';
@@ -42,26 +44,26 @@ class Home extends StatelessWidget {
             children: [
               const DrawerHeader(
                 decoration: BoxDecoration(
-                  color: Colors.pinkAccent,
+                  color: Color(0xFFF9D2D2),
                 ),
-                child: Text('Drawer Header'),
+                child: Text('CLUB ZaZu'),
               ),
               ListTile(
-                title: const Text('Item 1'),
+                title: const Text('Change Password'),
                 onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ChangePassword()),
+                  );
                 },
               ),
               ListTile(
-                title: const Text('Item 2'),
+                title: const Text('Logout'),
                 onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Login()),
+                  );
                 },
               ),
             ],
