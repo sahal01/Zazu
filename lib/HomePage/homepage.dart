@@ -5,6 +5,7 @@ import '../ProductDetailPage/productdetail.dart';
 import '../Providers/Homeprovider/HomeProvider.dart';
 import '../styles/Styles.dart';
 
+
 class Home extends StatelessWidget {
   Home({Key? key}) : super(key: key);
 
@@ -87,83 +88,79 @@ class Home extends StatelessWidget {
         body: Consumer<HomeProvider>(builder: (context, provider, child) {
           return Column(
             children: [
-              Expanded(
-                flex: 2,
-                child: Container(
-                    width: w,
-                    padding: const EdgeInsets.all(20),
-                    color: Colors.yellow[50],
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox(
-                          width: w / 1.2,
-                          child: Container(
-                            height: 55,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(25.0),
-                              color: Colors.white,
-                            ),
-                            child: Row(
-                              children: [
-                                const Expanded(
-                                  flex: 12,
-                                  child: TextField(
-                                    decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: 'Search',
-                                        contentPadding:
-                                            EdgeInsets.all(15.0)),
+              Container(
+                  width: w,height: 72,
+                  padding: const EdgeInsets.only(left: 15,right: 15,top: 13,bottom: 13),
+                  color:yellw,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: w / 1.2,
+                        child: Container(
+                          height: 55,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(25.0),
+                            color: Colors.white,
+                          ),
+                          child: Row(
+                            children: [
+                              const Expanded(
+                                flex: 12,
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: 'Search',
+                                      contentPadding:
+                                          EdgeInsets.all(15.0)),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.only(
+                                        topRight: Radius.circular(25),
+                                        bottomRight: Radius.circular(25)),
+                                    color: searchbtn,
+                                  ),
+                                  child: IconButton(
+                                    icon: const Icon(
+                                      Icons.search,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {},
                                   ),
                                 ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.only(
-                                          topRight: Radius.circular(25),
-                                          bottomRight: Radius.circular(25)),
-                                      color: Colors.purple[300],
-                                    ),
-                                    child: IconButton(
-                                      icon: const Icon(
-                                        Icons.search,
-                                        color: Colors.white,
-                                      ),
-                                      onPressed: () {},
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
+                              )
+                            ],
                           ),
                         ),
-                        DropdownButton(
+                      ),
+                      DropdownButton(
 
-                            // Initial Value
-                            value: provider.dropdownvalue,
-                            hint: const Text('Select'),
-                            underline: const SizedBox(),
-                            // Down Arrow Icon
-                            icon: const Icon(Icons.arrow_drop_down),
+                          // Initial Value
+                          value: provider.dropdownvalue,
+                          hint: const Text('Select'),
+                          underline: const SizedBox(),
+                          // Down Arrow Icon
+                          icon: const Icon(Icons.arrow_drop_down),
 
-                            // Array list of items
-                            items: provider.items.map((String items) {
-                              return DropdownMenuItem(
-                                value: items,
-                                child: Text(items),
-                              );
-                            }).toList(),
-                            // After selecting the desired option,it will
-                            // change button value to selected value
-                            onChanged: (String? newValue) {
-                              provider.dropdown(newValue!);
-                            }),
-                      ],
-                    )),
-              ),
+                          // Array list of items
+                          items: provider.items.map((String items) {
+                            return DropdownMenuItem(
+                              value: items,
+                              child: Text(items),
+                            );
+                          }).toList(),
+                          // After selecting the desired option,it will
+                          // change button value to selected value
+                          onChanged: (String? newValue) {
+                            provider.dropdown(newValue!);
+                          }),
+                    ],
+                  )),
               Expanded(
-                flex: 12,
                 child: Container(
                   margin: const EdgeInsets.all(15),
                   child: GridView.count(
@@ -182,8 +179,8 @@ class Home extends StatelessWidget {
                           },
                           child: Card(
                               color: white,
-                              shape:  const RoundedRectangleBorder(
-                                side: BorderSide(color: Colors.pinkAccent),
+                              shape:    const RoundedRectangleBorder(
+                                side: BorderSide(color:Color(0xFFF6ADAD)),
                                 borderRadius: BorderRadius.all(Radius.circular(15.0)),
                               ),
                               child: SizedBox(width: w,
