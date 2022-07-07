@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../styles/Styles.dart';
 
 class ProductViewimage extends StatelessWidget {
-   ProductViewimage({Key? key}) : super(key: key);
+  ProductViewimage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

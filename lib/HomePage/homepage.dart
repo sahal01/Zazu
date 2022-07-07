@@ -7,7 +7,6 @@ import '../ProductDetailPage/productdetail.dart';
 import '../Providers/Homeprovider/HomeProvider.dart';
 import '../styles/Styles.dart';
 
-
 class Home extends StatelessWidget {
   Home({Key? key}) : super(key: key);
 
@@ -69,31 +68,35 @@ class Home extends StatelessWidget {
             ],
           ),
         ),
-
-
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.grey,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_rounded,size: 30.0,),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart,size: 30.0,),
-            label: '',
-          ),
-        ],
-      ),
-
-
+        bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.grey,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home_rounded,
+                size: 30.0,
+              ),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.shopping_cart,
+                size: 30.0,
+              ),
+              label: '',
+            ),
+          ],
+        ),
         body: Consumer<HomeProvider>(builder: (context, provider, child) {
           return Column(
             children: [
               Container(
-                  width: w,height: 72,
-                  padding: const EdgeInsets.only(left: 15,right: 15,top: 13,bottom: 13),
-                  color:yellw,
+                  width: w,
+                  height: 72,
+                  padding: const EdgeInsets.only(
+                      left: 15, right: 15, top: 13, bottom: 13),
+                  color: yellw,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -113,8 +116,7 @@ class Home extends StatelessWidget {
                                   decoration: InputDecoration(
                                       border: InputBorder.none,
                                       hintText: 'Search',
-                                      contentPadding:
-                                          EdgeInsets.all(15.0)),
+                                      contentPadding: EdgeInsets.all(15.0)),
                                 ),
                               ),
                               Expanded(
@@ -173,40 +175,71 @@ class Home extends StatelessWidget {
                     children: List<Widget>.generate(30, (index) {
                       return GridTile(
                         child: InkWell(
-                          onTap: (){
+                          onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => ProductDetailPage()),
+                              MaterialPageRoute(
+                                  builder: (context) => ProductDetailPage()),
                             );
                           },
                           child: Card(
                               color: white,
-                              shape:    const RoundedRectangleBorder(
-                                side: BorderSide(color:Color(0xFFF6ADAD)),
-                                borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                              shape: const RoundedRectangleBorder(
+                                side: BorderSide(color: Color(0xFFF6ADAD)),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15.0)),
                               ),
-                              child: SizedBox(width: w,
-                                child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                              child: SizedBox(
+                                width: w,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Center(
-                                      child: Image.asset('assets/images/img_1.png',
+                                      child: Image.asset(
+                                          'assets/images/img_1.png',
                                           fit: BoxFit.cover),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 15.0,bottom: 10),
-                                      child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                                      padding: const EdgeInsets.only(
+                                          left: 15.0, bottom: 10),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
-                                          Text("Name",style: Styles().normalS(fontW: FontWeight.normal, fontS: 18, color: black),),
-                                          Text("Price",style: Styles().normalS(fontW: FontWeight.normal, fontS: 17, color: black),),
-                                          Text("Colour/Size",style: Styles().normalS(fontW: FontWeight.normal, fontS: 17, color: black),),
-                                          Text("Stock",style: Styles().normalS(fontW: FontWeight.bold, fontS: 17, color: Colors.red),),
+                                          Text(
+                                            "Name",
+                                            style: Styles().normalS(
+                                                fontW: FontWeight.normal,
+                                                fontS: 18,
+                                                color: black),
+                                          ),
+                                          Text(
+                                            "Price",
+                                            style: Styles().normalS(
+                                                fontW: FontWeight.normal,
+                                                fontS: 17,
+                                                color: black),
+                                          ),
+                                          Text(
+                                            "Colour/Size",
+                                            style: Styles().normalS(
+                                                fontW: FontWeight.normal,
+                                                fontS: 17,
+                                                color: black),
+                                          ),
+                                          Text(
+                                            "Stock",
+                                            style: Styles().normalS(
+                                                fontW: FontWeight.bold,
+                                                fontS: 17,
+                                                color: Colors.red),
+                                          ),
                                         ],
                                       ),
                                     )
                                   ],
                                 ),
-                              )
-                          ),
+                              )),
                         ),
                       );
                     }),

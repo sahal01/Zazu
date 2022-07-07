@@ -12,6 +12,8 @@ class ChangepassTextformfield {
       required TextEditingController confirmnewpass,
       required String text,
       required String hint,
+      required bool istrue,
+      required int index,
       required bool obscureText}) {
     return Consumer<ProviderChangePassword>(
         builder: (context, provider, child) {
@@ -22,15 +24,30 @@ class ChangepassTextformfield {
           autofocus: true,
           enableSuggestions: false,
           autocorrect: false,
-          decoration: Inputdecoration().inputdecoration(hint: hint, password: (){return IconButton(
-              icon: Icon(
-                  provider.isObscure
-                  ? Icons.visibility_off
-                  : Icons.visibility
-              ),
-              onPressed: () {
-                provider.showpass();
-              });}),
+          decoration: Inputdecoration().inputdecoration(
+              hint: hint,
+              password: () {
+                if (istrue) {
+                  if (index == 1) {
+                    return IconButton(
+                        icon: Icon(provider.isObscure
+                            ? Icons.visibility_off
+                            : Icons.visibility),
+                        onPressed: () {
+                          provider.showpass();
+                        });
+                  }
+                  if (index == 2) {
+                    return IconButton(
+                        icon: Icon(provider.isObscure2
+                            ? Icons.visibility_off
+                            : Icons.visibility),
+                        onPressed: () {
+                          provider.showpass2();
+                        });
+                  }
+                }
+              }),
           validator: (value) {
             if (value == null || value.isEmpty) {
               return text;

@@ -294,16 +294,16 @@ class ProductDetailPage extends StatelessWidget {
                           height: 30,
                         ),
                         SizedBox(
-                          width: w,
-                          child:Button().button(action: (){
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Cart()),
-                            );
-                          }, txt: "ADD TO CART")
-
-                        )
+                            width: w,
+                            child: Button().button(
+                                action: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Cart()),
+                                  );
+                                },
+                                txt: "ADD TO CART"))
                       ],
                     ),
                   )

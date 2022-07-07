@@ -2,16 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zazu/Changepassword/widgets/ChangepassTextformfield.dart';
 
-
 import '../CommonWidgets/Button.dart';
 import '../Providers/ProviderChangePassword/ProviderChangePassword.dart';
 import '../styles/Styles.dart';
 
 class ChangePassword extends StatelessWidget {
   ChangePassword({Key? key}) : super(key: key);
-  final oldpass = TextEditingController();
-  final newpass = TextEditingController();
-  final confirmnewpass = TextEditingController();
+
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -39,37 +36,45 @@ class ChangePassword extends StatelessWidget {
                           fontW: FontWeight.w500, fontS: 22, color: black),
                     ),
                   ),
-                  const SizedBox(height: 80,),
-
+                  const SizedBox(
+                    height: 80,
+                  ),
                   ChangepassTextformfield().changepasstextformfield(
-                      controller: oldpass,
-                      newpass: newpass,
-                      confirmnewpass: confirmnewpass,
-                      text: "Please enter old Password",
-                      hint: "Enter current password",
-                      obscureText: provider.isObscure),
+                    controller: provider.oldpass,
+                    newpass: provider.newpass,
+                    confirmnewpass: provider.confirmnewpass,
+                    text: "Please enter old Password",
+                    hint: "Enter current password",
+                    obscureText: provider.isObscure,
+                    istrue: true,
+                    index: 1,
+                  ),
                   const SizedBox(
                     height: 15,
                   ),
                   ChangepassTextformfield().changepasstextformfield(
-                      controller: newpass,
-                      newpass: newpass,
-                      confirmnewpass: confirmnewpass,
-                      text: 'Please enter new Password',
-                      hint: "Enter new password",
-                      obscureText: provider.isObscure),
+                    controller: provider.newpass,
+                    newpass: provider.newpass,
+                    confirmnewpass: provider.confirmnewpass,
+                    text: 'Please enter new Password',
+                    hint: "Enter new password",
+                    obscureText: provider.isObscure2,
+                    istrue: true,
+                    index: 2,
+                  ),
                   const SizedBox(
                     height: 15,
                   ),
-
                   ChangepassTextformfield().changepasstextformfield(
-                      controller: confirmnewpass,
-                      newpass: newpass,
-                      confirmnewpass: confirmnewpass,
-                      text: 'Please Re-Enter New Password',
-                      hint: "Re enter new password",
-                      obscureText: provider.isObscure),
-
+                    controller: provider.confirmnewpass,
+                    newpass: provider.newpass,
+                    confirmnewpass: provider.confirmnewpass,
+                    text: 'Please Re-Enter New Password',
+                    hint: "Re enter new password",
+                    obscureText: false,
+                    istrue: false,
+                    index: 0,
+                  ),
                   const SizedBox(
                     height: 15,
                   ),
@@ -77,18 +82,18 @@ class ChangePassword extends StatelessWidget {
                     height: 15,
                   ),
                   SizedBox(
-                    width: w,
-                    height: 40,
-                    child: Button().button(action: (){
-                      if (_formKey.currentState!.validate()) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Processing Data')),
-                        );
-                      }
-                    }, txt: "Change Password")
-
-
-                ),
+                      width: w,
+                      height: 40,
+                      child: Button().button(
+                          action: () {
+                            if (_formKey.currentState!.validate()) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    content: Text('Processing Data')),
+                              );
+                            }
+                          },
+                          txt: "Change Password")),
                 ],
               ),
             ),
