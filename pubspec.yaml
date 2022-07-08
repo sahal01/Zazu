@@ -38,6 +38,7 @@ dependencies:
   provider:
   get:
   logger:
+  flutter_riverpod: ^1.0.4
 
 dev_dependencies:
   flutter_test:

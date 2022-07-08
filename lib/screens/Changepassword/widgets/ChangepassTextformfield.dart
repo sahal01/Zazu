@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../Providers/ProviderChangePassword/ProviderChangePassword.dart';
 import '../../Login/InputDecoration.dart';
-import '../../Providers/ProviderChangePassword/ProviderChangePassword.dart';
 
 class ChangepassTextformfield {
   changepasstextformfield(

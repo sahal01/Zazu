@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../Providers/loginprovider/LoginProvider.dart';
+import '../../Providers/loginprovider/LoginProvider.dart';
 import 'InputDecoration.dart';
 import 'Validator.dart';
 

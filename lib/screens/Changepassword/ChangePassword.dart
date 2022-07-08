@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:zazu/Changepassword/widgets/ChangepassTextformfield.dart';
 
+import '../../Providers/ProviderChangePassword/ProviderChangePassword.dart';
+import '../../utils/Styles.dart';
+import '../../utils/colors.dart';
 import '../CommonWidgets/Button.dart';
-import '../Providers/ProviderChangePassword/ProviderChangePassword.dart';
-import '../styles/Styles.dart';
+import 'widgets/ChangepassTextformfield.dart';
 
 class ChangePassword extends StatelessWidget {
   ChangePassword({Key? key}) : super(key: key);
@@ -33,7 +34,9 @@ class ChangePassword extends StatelessWidget {
                     child: Text(
                       "Change password",
                       style: Styles().normalS(
-                          fontW: FontWeight.w500, fontS: 22, color: black),
+                          fontW: FontWeight.w500,
+                          fontS: 22,
+                          color: AppColors.black),
                     ),
                   ),
                   const SizedBox(

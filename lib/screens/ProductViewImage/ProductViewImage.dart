@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../styles/Styles.dart';
+import '../../utils/Styles.dart';
+import '../../utils/colors.dart';
 
 class ProductViewimage extends StatelessWidget {
   ProductViewimage({Key? key}) : super(key: key);
@@ -9,18 +10,18 @@ class ProductViewimage extends StatelessWidget {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
-        backgroundColor: white,
+        backgroundColor: AppColors.white,
         appBar: AppBar(
           centerTitle: false,
           automaticallyImplyLeading: true,
-          backgroundColor: white,
+          backgroundColor: AppColors.white,
           leading: const BackButton(
             color: Colors.black,
           ),
           title: Text(
             'Product Details',
-            style: Styles()
-                .normalS(fontW: FontWeight.normal, fontS: 22, color: black),
+            style: Styles().normalS(
+                fontW: FontWeight.normal, fontS: 22, color: AppColors.black),
           ),
         ),
         body: Center(

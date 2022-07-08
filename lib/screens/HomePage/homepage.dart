@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:zazu/Login/login.dart';
-
+import '../../Providers/Homeprovider/HomeProvider.dart';
+import '../../utils/Styles.dart';
+import '../../utils/colors.dart';
 import '../Changepassword/ChangePassword.dart';
+import '../Login/login.dart';
 import '../ProductDetailPage/productdetail.dart';
-import '../Providers/Homeprovider/HomeProvider.dart';
-import '../styles/Styles.dart';
 
 class Home extends StatelessWidget {
   Home({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
-        backgroundColor: white,
+        backgroundColor: AppColors.white,
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(80.0),
           child: Padding(
@@ -32,7 +32,7 @@ class Home extends StatelessWidget {
                   },
                 ),
               ),
-              backgroundColor: primary1,
+              backgroundColor: AppColors.primary1,
               title: const Text('CLUB ZaZu'),
             ),
           ),
@@ -96,7 +96,7 @@ class Home extends StatelessWidget {
                   height: 72,
                   padding: const EdgeInsets.only(
                       left: 15, right: 15, top: 13, bottom: 13),
-                  color: yellw,
+                  color: AppColors.yellw,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -122,11 +122,11 @@ class Home extends StatelessWidget {
                               Expanded(
                                 flex: 1,
                                 child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.only(
+                                  decoration: const BoxDecoration(
+                                    borderRadius: BorderRadius.only(
                                         topRight: Radius.circular(25),
                                         bottomRight: Radius.circular(25)),
-                                    color: searchbtn,
+                                    color: AppColors.searchbtn,
                                   ),
                                   child: IconButton(
                                     icon: const Icon(
@@ -183,7 +183,7 @@ class Home extends StatelessWidget {
                             );
                           },
                           child: Card(
-                              color: white,
+                              color: AppColors.white,
                               shape: const RoundedRectangleBorder(
                                 side: BorderSide(color: Color(0xFFF6ADAD)),
                                 borderRadius:
@@ -211,21 +211,21 @@ class Home extends StatelessWidget {
                                             style: Styles().normalS(
                                                 fontW: FontWeight.normal,
                                                 fontS: 18,
-                                                color: black),
+                                                color: AppColors.black),
                                           ),
                                           Text(
                                             "Price",
                                             style: Styles().normalS(
                                                 fontW: FontWeight.normal,
                                                 fontS: 17,
-                                                color: black),
+                                                color: AppColors.black),
                                           ),
                                           Text(
                                             "Colour/Size",
                                             style: Styles().normalS(
                                                 fontW: FontWeight.normal,
                                                 fontS: 17,
-                                                color: black),
+                                                color: AppColors.black),
                                           ),
                                           Text(
                                             "Stock",

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../Providers/Cartprovider/Cartprovider.dart';
 import '../../utils/Styles.dart';
 import '../../utils/colors.dart';
 import '../CommonWidgets/Button.dart';
@@ -28,8 +29,8 @@ class Cart extends StatelessWidget {
           ),
           title: Text(
             'CART',
-            style: Styles()
-                .normalS(fontW: FontWeight.normal, fontS: 22, color: black),
+            style: Styles().normalS(
+                fontW: FontWeight.normal, fontS: 22, color: AppColors.black),
           ),
         ),
         body: Consumer<CartProvider>(builder: (context, provider, child) {
@@ -261,12 +262,16 @@ class Cart extends StatelessWidget {
                       Text(
                         'PRICE :',
                         style: Styles().normalS(
-                            fontW: FontWeight.w500, fontS: 16, color: black),
+                            fontW: FontWeight.w500,
+                            fontS: 16,
+                            color: AppColors.black),
                       ),
                       Text(
                         'RS 899',
                         style: Styles().normalS(
-                            fontW: FontWeight.w500, fontS: 16, color: black),
+                            fontW: FontWeight.w500,
+                            fontS: 16,
+                            color: AppColors.black),
                       )
                     ],
                   ),
@@ -282,12 +287,16 @@ class Cart extends StatelessWidget {
                       Text(
                         'TAX :',
                         style: Styles().normalS(
-                            fontW: FontWeight.w500, fontS: 16, color: black),
+                            fontW: FontWeight.w500,
+                            fontS: 16,
+                            color: AppColors.black),
                       ),
                       Text(
                         'RS 109',
                         style: Styles().normalS(
-                            fontW: FontWeight.w500, fontS: 16, color: black),
+                            fontW: FontWeight.w500,
+                            fontS: 16,
+                            color: AppColors.black),
                       )
                     ],
                   ),
@@ -303,12 +312,16 @@ class Cart extends StatelessWidget {
                       Text(
                         'TOTAL :',
                         style: Styles().normalS(
-                            fontW: FontWeight.w500, fontS: 19, color: black),
+                            fontW: FontWeight.w500,
+                            fontS: 19,
+                            color: AppColors.black),
                       ),
                       Text(
                         'RS 1008',
                         style: Styles().normalS(
-                            fontW: FontWeight.w500, fontS: 19, color: black),
+                            fontW: FontWeight.w500,
+                            fontS: 19,
+                            color: AppColors.black),
                       )
                     ],
                   ),

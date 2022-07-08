@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slider/carousel.dart';
 import 'package:provider/provider.dart';
-import 'package:zazu/ProductDetailPage/rectangle.dart';
-import 'package:zazu/styles/Styles.dart';
+import 'package:zazu/screens/ProductDetailPage/rectangle.dart';
+import 'package:zazu/utils/Styles.dart';
 
+import '../../Providers/Productdetailpageprovider/ProductDetailPageProvider.dart';
+import '../../utils/colors.dart';
 import '../Cart/Cart.dart';
 import '../CommonWidgets/Button.dart';
 import '../ProductViewImage/ProductViewImage.dart';
-import '../Providers/Productdetailpageprovider/ProductDetailPageProvider.dart';
 
 class ProductDetailPage extends StatelessWidget {
   ProductDetailPage({Key? key}) : super(key: key);
@@ -16,24 +17,24 @@ class ProductDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
-        backgroundColor: white,
+        backgroundColor: AppColors.white,
         appBar: AppBar(
           centerTitle: false,
           automaticallyImplyLeading: true,
-          backgroundColor: white,
+          backgroundColor: AppColors.white,
           leading: const BackButton(
             color: Colors.black,
           ),
           title: Text(
             'Product Details',
-            style: Styles()
-                .normalS(fontW: FontWeight.normal, fontS: 22, color: black),
+            style: Styles().normalS(
+                fontW: FontWeight.normal, fontS: 22, color: AppColors.black),
           ),
           actions: <Widget>[
             IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.shopping_cart,
-                color: black,
+                color: AppColors.black,
               ),
               onPressed: () {
                 Navigator.push(
@@ -59,7 +60,7 @@ class ProductDetailPage extends StatelessWidget {
                             builder: (context) => ProductViewimage()),
                       );
                     },
-                    child: Container(
+                    child: SizedBox(
                         width: w,
                         child: Carousel(
                           height: w + 100,
@@ -104,7 +105,9 @@ class ProductDetailPage extends StatelessWidget {
                         Text(
                           'LADIES GOWN',
                           style: Styles().normalS(
-                              fontW: FontWeight.w600, fontS: 20, color: black),
+                              fontW: FontWeight.w600,
+                              fontS: 20,
+                              color: AppColors.black),
                         ),
                         const SizedBox(
                           height: 10,
@@ -117,14 +120,14 @@ class ProductDetailPage extends StatelessWidget {
                               style: Styles().normalS(
                                   fontW: FontWeight.normal,
                                   fontS: 17,
-                                  color: black),
+                                  color: AppColors.black),
                             ),
                             Text(
                               ' 899',
                               style: Styles().normalS(
                                   fontW: FontWeight.w500,
                                   fontS: 20,
-                                  color: black),
+                                  color: AppColors.black),
                             ),
                           ],
                         ),
@@ -138,14 +141,14 @@ class ProductDetailPage extends StatelessWidget {
                               style: Styles().normalS(
                                   fontW: FontWeight.normal,
                                   fontS: 17,
-                                  color: black),
+                                  color: AppColors.black),
                             ),
                             Text(
                               ' S,M,L,XL',
                               style: Styles().normalS(
                                   fontW: FontWeight.w600,
                                   fontS: 20,
-                                  color: black),
+                                  color: AppColors.black),
                             ),
                           ],
                         ),
@@ -159,7 +162,7 @@ class ProductDetailPage extends StatelessWidget {
                               style: Styles().normalS(
                                   fontW: FontWeight.normal,
                                   fontS: 17,
-                                  color: black),
+                                  color: AppColors.black),
                             ),
                             Rectangles().rectangles(clr: Colors.red),
                             const SizedBox(
@@ -186,9 +189,9 @@ class ProductDetailPage extends StatelessWidget {
                               style: Styles().normalS(
                                   fontW: FontWeight.normal,
                                   fontS: 17,
-                                  color: black),
+                                  color: AppColors.black),
                             ),
-                            Container(
+                            SizedBox(
                               width: 150,
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 5.0),
@@ -257,14 +260,14 @@ class ProductDetailPage extends StatelessWidget {
                               style: Styles().normalS(
                                   fontW: FontWeight.normal,
                                   fontS: 17,
-                                  color: black),
+                                  color: AppColors.black),
                             ),
                             Text(
                               ' SAMPLE',
                               style: Styles().normalS(
                                   fontW: FontWeight.w500,
                                   fontS: 20,
-                                  color: black),
+                                  color: AppColors.black),
                             ),
                           ],
                         ),
@@ -276,7 +279,7 @@ class ProductDetailPage extends StatelessWidget {
                           style: Styles().normalS(
                               fontW: FontWeight.normal,
                               fontS: 18,
-                              color: black),
+                              color: AppColors.black),
                         ),
                         const SizedBox(
                           height: 15,
@@ -286,7 +289,7 @@ class ProductDetailPage extends StatelessWidget {
                           style: Styles().normalS(
                               fontW: FontWeight.normal,
                               fontS: 16,
-                              color: black),
+                              color: AppColors.black),
                           textDirection: TextDirection.ltr,
                           maxLines: 4,
                         ),
