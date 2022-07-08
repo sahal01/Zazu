@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../utils/Styles.dart';
+import '../../utils/colors.dart';
 import '../CommonWidgets/Button.dart';
-import '../Providers/Cartprovider/Cartprovider.dart';
-import '../styles/Styles.dart';
 
 class Cart extends StatelessWidget {
   Cart({Key? key}) : super(key: key);
@@ -18,11 +18,11 @@ class Cart extends StatelessWidget {
     List<double> productprice = [899, 1000, 1345];
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
-        backgroundColor: white,
+        backgroundColor: AppColors.white,
         appBar: AppBar(
           centerTitle: false,
           automaticallyImplyLeading: true,
-          backgroundColor: white,
+          backgroundColor: AppColors.white,
           leading: const BackButton(
             color: Colors.black,
           ),
@@ -49,7 +49,7 @@ class Cart extends StatelessWidget {
                             width: w,
                             height: 130,
                             decoration: BoxDecoration(
-                              border: Border.all(color: primary1),
+                              border: Border.all(color: AppColors.primary1),
                               borderRadius: BorderRadius.circular(1),
                             ),
                             child: Padding(
@@ -78,7 +78,7 @@ class Cart extends StatelessWidget {
                                                 style: Styles().normalS(
                                                     fontW: FontWeight.w500,
                                                     fontS: 17,
-                                                    color: black),
+                                                    color: AppColors.black),
                                               ),
                                               const SizedBox(
                                                 height: 8,
@@ -88,7 +88,7 @@ class Cart extends StatelessWidget {
                                                 style: Styles().normalS(
                                                     fontW: FontWeight.normal,
                                                     fontS: 16,
-                                                    color: black),
+                                                    color: AppColors.black),
                                               ),
                                               const SizedBox(
                                                 height: 8,
@@ -103,7 +103,7 @@ class Cart extends StatelessWidget {
                                                         fontW:
                                                             FontWeight.normal,
                                                         fontS: 16,
-                                                        color: black),
+                                                        color: AppColors.black),
                                                   ),
                                                   Text(
                                                     productprice[index]
@@ -111,7 +111,7 @@ class Cart extends StatelessWidget {
                                                     style: Styles().normalS(
                                                         fontW: FontWeight.w500,
                                                         fontS: 18,
-                                                        color: black),
+                                                        color: AppColors.black),
                                                   ),
                                                 ],
                                               ),
@@ -129,7 +129,7 @@ class Cart extends StatelessWidget {
                                                 IconButton(
                                                   icon: Icon(
                                                     Icons.delete,
-                                                    color: black,
+                                                    color: AppColors.black,
                                                   ),
                                                   onPressed: () {},
                                                 ),
@@ -187,7 +187,6 @@ class Cart extends StatelessWidget {
                                                                       Icons
                                                                           .remove))),
                                                         ),
-
                                                         Text(
                                                           "${provider.quantity}",
                                                           style: const TextStyle(
@@ -250,9 +249,7 @@ class Cart extends StatelessWidget {
                 const SizedBox(
                   height: 100,
                 ),
-                Divider(
-                  color: grey,
-                ),
+                const Divider(color: AppColors.grey),
                 const SizedBox(
                   height: 40,
                 ),
