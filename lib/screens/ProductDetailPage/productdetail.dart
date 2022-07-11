@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slider/carousel.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zazu/screens/ProductDetailPage/rectangle.dart';
 import 'package:zazu/utils/Styles.dart';
-
-import '../../Providers/Productdetailpageprovider/ProductDetailPageProvider.dart';
+import '../../Providers/providers.dart';
 import '../../utils/colors.dart';
 import '../Cart/Cart.dart';
 import '../CommonWidgets/Button.dart';
@@ -48,8 +47,9 @@ class ProductDetailPage extends StatelessWidget {
           )
         ],
       ),
-      body: Consumer<ProductDetailPageProvider>(
-        builder: (context, provider, child) {
+      body: Consumer(
+        builder: (_, ref, __) {
+          final data = ref.watch(productDetailesProvider);
           return SizedBox(
             width: w,
             child: SingleChildScrollView(
@@ -234,14 +234,14 @@ class ProductDetailPage extends StatelessWidget {
                                           padding: EdgeInsets.zero,
                                           color: Colors.black,
                                           onPressed: () {
-                                            provider.decrementquantity();
+                                            data.decrementquantity();
                                           },
                                           icon: const Icon(Icons.remove),
                                         ),
                                       ),
                                     ),
                                     Text(
-                                      '${provider.quantity}',
+                                      '${data.quantity}',
                                       style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -262,9 +262,7 @@ class ProductDetailPage extends StatelessWidget {
                                         child: IconButton(
                                           padding: EdgeInsets.zero,
                                           color: Colors.black,
-                                          onPressed: () {
-                                            provider.incrementquantity();
-                                          },
+                                          onPressed: data.incrementquantity,
                                           icon: const Icon(Icons.add),
                                         ),
                                       ),
