@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../Providers/loginprovider/LoginProvider.dart';
+import '../../Providers/providers.dart';
 import '../CommonWidgets/Button.dart';
 import '../HomePage/homepage.dart';
 import 'Textformfield.dart';
 
-class Login extends StatelessWidget {
+class Login extends ConsumerWidget {
   Login({Key? key}) : super(key: key);
   final username = TextEditingController();
   final userpass = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     double w = MediaQuery.of(context).size.width;
 
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: Consumer<LoginProvider>(builder: (context, provider, child) {
+      backgroundColor: Colors.white,
+      body: Consumer(
+        builder: (_, ref, __) {
+          final data = ref.watch(loginProvider);
           return Padding(
             padding: const EdgeInsets.all(30),
             child: SizedBox(
@@ -35,26 +38,30 @@ class Login extends StatelessWidget {
                       const Text(
                         'Login',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 28),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 28,
+                        ),
                       ),
                       const SizedBox(
                         height: 200,
                       ),
-                      Textformfield().textformfield(
-                          controller: username,
-                          obs: false,
-                          hint: "User name",
-                          text: "Enter User Name",
-                          userpass: userpass),
+                      Textformfield(
+                        controller: username,
+                        obs: false,
+                        hint: 'User name',
+                        text: 'Enter User Name',
+                        userpass: userpass,
+                      ),
                       const SizedBox(
                         height: 30,
                       ),
-                      Textformfield().textformfield(
-                          controller: userpass,
-                          obs: provider.isObscure,
-                          hint: "Password",
-                          text: "Enter User Password",
-                          userpass: userpass),
+                      Textformfield(
+                        controller: userpass,
+                        obs: data.isObscure,
+                        hint: 'Password',
+                        text: 'Enter User Password',
+                        userpass: userpass,
+                      ),
                       const SizedBox(
                         height: 30,
                       ),
@@ -62,16 +69,20 @@ class Login extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           TextButton(
-                              onPressed: () {
-                                var snackBar = const SnackBar(
-                                    content: Text('Forgot Password'));
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(snackBar);
-                              },
-                              child: const Text("Forgot Password",
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                  )))
+                            onPressed: () {
+                              var snackBar = const SnackBar(
+                                content: Text('Forgot Password'),
+                              );
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                            },
+                            child: const Text(
+                              'Forgot Password',
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
+                          )
                         ],
                       ),
                       const SizedBox(
@@ -80,23 +91,26 @@ class Login extends StatelessWidget {
                       SizedBox(
                         width: w - 24,
                         child: Button().button(
-                            action: () {
-                              if (_formKey.currentState!.validate()) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                      content: Text('Processing Data')),
-                                );
+                          action: () {
+                            if (_formKey.currentState!.validate()) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Processing Data'),
+                                ),
+                              );
 
-                                WidgetsBinding.instance
-                                    .addPostFrameCallback((_) {
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (_) => Home()));
-                                });
-                              }
-                            },
-                            txt: "LOGIN"),
+                              WidgetsBinding.instance.addPostFrameCallback((_) {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => const Home(),
+                                  ),
+                                );
+                              });
+                            }
+                          },
+                          txt: 'LOGIN',
+                        ),
                       )
                     ],
                   ),
@@ -104,6 +118,8 @@ class Login extends StatelessWidget {
               ),
             ),
           );
-        }));
+        },
+      ),
+    );
   }
 }

@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'Providers/Cartprovider/Cartprovider.dart';
-import 'Providers/Homeprovider/HomeProvider.dart';
-import 'Providers/Productdetailpageprovider/ProductDetailPageProvider.dart';
-import 'Providers/ProviderChangePassword/ProviderChangePassword.dart';
-import 'Providers/loginprovider/LoginProvider.dart';
 import 'screens/SplashScreen/splashscreen.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'ZUZU',
-      debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+    return MultiProvider(
+      providers: [],
+      child: MaterialApp(
+        title: 'ZUZU',
+        debugShowCheckedModeBanner: false,
+        home: SplashScreen(),
+      ),
     );
   }
 }

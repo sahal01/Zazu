@@ -17,36 +17,39 @@ class ProductDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: AppColors.white,
+      appBar: AppBar(
+        centerTitle: false,
+        automaticallyImplyLeading: true,
         backgroundColor: AppColors.white,
-        appBar: AppBar(
-          centerTitle: false,
-          automaticallyImplyLeading: true,
-          backgroundColor: AppColors.white,
-          leading: const BackButton(
-            color: Colors.black,
-          ),
-          title: Text(
-            'Product Details',
-            style: Styles().normalS(
-                fontW: FontWeight.normal, fontS: 22, color: AppColors.black),
-          ),
-          actions: <Widget>[
-            IconButton(
-              icon: const Icon(
-                Icons.shopping_cart,
-                color: AppColors.black,
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Cart()),
-                );
-              },
-            )
-          ],
+        leading: const BackButton(
+          color: Colors.black,
         ),
-        body: Consumer<ProductDetailPageProvider>(
-            builder: (context, provider, child) {
+        title: Text(
+          'Product Details',
+          style: Styles().normalS(
+            fontW: FontWeight.normal,
+            fontS: 22,
+            color: AppColors.black,
+          ),
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(
+              Icons.shopping_cart,
+              color: AppColors.black,
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Cart()),
+              );
+            },
+          )
+        ],
+      ),
+      body: Consumer<ProductDetailPageProvider>(
+        builder: (context, provider, child) {
           return SizedBox(
             width: w,
             child: SingleChildScrollView(
@@ -57,44 +60,52 @@ class ProductDetailPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ProductViewimage()),
+                          builder: (context) => ProductViewimage(),
+                        ),
                       );
                     },
                     child: SizedBox(
-                        width: w,
-                        child: Carousel(
-                          height: w + 100,
-                          indicatorBarColor: Colors.white,
-                          autoScrollDuration: const Duration(seconds: 2),
-                          animationPageDuration:
-                              const Duration(milliseconds: 500),
-                          activateIndicatorColor: Colors.pink.shade100,
-                          animationPageCurve: Curves.bounceInOut,
-                          indicatorBarHeight: 50,
-                          indicatorHeight: 10,
-                          indicatorWidth: 10,
-                          unActivatedIndicatorColor: Colors.grey.shade100,
-                          stopAtEnd: true,
-                          autoScroll: true,
-                          // widgets
-                          items: [
-                            SizedBox(
-                              width: w,
-                              child: Image.asset('assets/images/img_2.png',
-                                  fit: BoxFit.cover),
+                      width: w,
+                      child: Carousel(
+                        height: w + 100,
+                        indicatorBarColor: Colors.white,
+                        autoScrollDuration: const Duration(seconds: 2),
+                        animationPageDuration:
+                            const Duration(milliseconds: 500),
+                        activateIndicatorColor: Colors.pink.shade100,
+                        animationPageCurve: Curves.bounceInOut,
+                        indicatorBarHeight: 50,
+                        indicatorHeight: 10,
+                        indicatorWidth: 10,
+                        unActivatedIndicatorColor: Colors.grey.shade100,
+                        stopAtEnd: true,
+                        autoScroll: true,
+                        // widgets
+                        items: [
+                          SizedBox(
+                            width: w,
+                            child: Image.asset(
+                              'assets/images/img_2.png',
+                              fit: BoxFit.cover,
                             ),
-                            SizedBox(
-                              width: w,
-                              child: Image.asset('assets/images/img_2.png',
-                                  fit: BoxFit.cover),
+                          ),
+                          SizedBox(
+                            width: w,
+                            child: Image.asset(
+                              'assets/images/img_2.png',
+                              fit: BoxFit.cover,
                             ),
-                            SizedBox(
-                              width: w,
-                              child: Image.asset('assets/images/img_2.png',
-                                  fit: BoxFit.cover),
-                            )
-                          ],
-                        )),
+                          ),
+                          SizedBox(
+                            width: w,
+                            child: Image.asset(
+                              'assets/images/img_2.png',
+                              fit: BoxFit.cover,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
                   ),
                   Container(
                     width: w,
@@ -105,9 +116,10 @@ class ProductDetailPage extends StatelessWidget {
                         Text(
                           'LADIES GOWN',
                           style: Styles().normalS(
-                              fontW: FontWeight.w600,
-                              fontS: 20,
-                              color: AppColors.black),
+                            fontW: FontWeight.w600,
+                            fontS: 20,
+                            color: AppColors.black,
+                          ),
                         ),
                         const SizedBox(
                           height: 10,
@@ -118,16 +130,18 @@ class ProductDetailPage extends StatelessWidget {
                             Text(
                               'RS :',
                               style: Styles().normalS(
-                                  fontW: FontWeight.normal,
-                                  fontS: 17,
-                                  color: AppColors.black),
+                                fontW: FontWeight.normal,
+                                fontS: 17,
+                                color: AppColors.black,
+                              ),
                             ),
                             Text(
                               ' 899',
                               style: Styles().normalS(
-                                  fontW: FontWeight.w500,
-                                  fontS: 20,
-                                  color: AppColors.black),
+                                fontW: FontWeight.w500,
+                                fontS: 20,
+                                color: AppColors.black,
+                              ),
                             ),
                           ],
                         ),
@@ -139,16 +153,18 @@ class ProductDetailPage extends StatelessWidget {
                             Text(
                               'AVAILABLE IN :',
                               style: Styles().normalS(
-                                  fontW: FontWeight.normal,
-                                  fontS: 17,
-                                  color: AppColors.black),
+                                fontW: FontWeight.normal,
+                                fontS: 17,
+                                color: AppColors.black,
+                              ),
                             ),
                             Text(
                               ' S,M,L,XL',
                               style: Styles().normalS(
-                                  fontW: FontWeight.w600,
-                                  fontS: 20,
-                                  color: AppColors.black),
+                                fontW: FontWeight.w600,
+                                fontS: 20,
+                                color: AppColors.black,
+                              ),
                             ),
                           ],
                         ),
@@ -160,9 +176,10 @@ class ProductDetailPage extends StatelessWidget {
                             Text(
                               'AVAILABLE IN :   ',
                               style: Styles().normalS(
-                                  fontW: FontWeight.normal,
-                                  fontS: 17,
-                                  color: AppColors.black),
+                                fontW: FontWeight.normal,
+                                fontS: 17,
+                                color: AppColors.black,
+                              ),
                             ),
                             Rectangles().rectangles(clr: Colors.red),
                             const SizedBox(
@@ -187,9 +204,10 @@ class ProductDetailPage extends StatelessWidget {
                             Text(
                               'SET COUNT :',
                               style: Styles().normalS(
-                                  fontW: FontWeight.normal,
-                                  fontS: 17,
-                                  color: AppColors.black),
+                                fontW: FontWeight.normal,
+                                fontS: 17,
+                                color: AppColors.black,
+                              ),
                             ),
                             SizedBox(
                               width: 150,
@@ -201,48 +219,55 @@ class ProductDetailPage extends StatelessWidget {
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
-                                          vertical: 5.0),
+                                        vertical: 5.0,
+                                      ),
                                       child: Container(
-                                          width: 40,
-                                          height: 40,
-                                          decoration: BoxDecoration(
-                                            border:
-                                                Border.all(color: Colors.black),
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                          ),
-                                          child: IconButton(
-                                              padding: EdgeInsets.zero,
-                                              color: Colors.black,
-                                              onPressed: () {
-                                                provider.decrementquantity();
-                                              },
-                                              icon: const Icon(Icons.remove))),
+                                        width: 40,
+                                        height: 40,
+                                        decoration: BoxDecoration(
+                                          border:
+                                              Border.all(color: Colors.black),
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                        child: IconButton(
+                                          padding: EdgeInsets.zero,
+                                          color: Colors.black,
+                                          onPressed: () {
+                                            provider.decrementquantity();
+                                          },
+                                          icon: const Icon(Icons.remove),
+                                        ),
+                                      ),
                                     ),
                                     Text(
-                                      "${provider.quantity}",
+                                      '${provider.quantity}',
                                       style: const TextStyle(
-                                          fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
-                                          vertical: 5.0),
+                                        vertical: 5.0,
+                                      ),
                                       child: Container(
-                                          width: 40,
-                                          height: 40,
-                                          decoration: BoxDecoration(
-                                            border:
-                                                Border.all(color: Colors.black),
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                          ),
-                                          child: IconButton(
-                                              padding: EdgeInsets.zero,
-                                              color: Colors.black,
-                                              onPressed: () {
-                                                provider.incrementquantity();
-                                              },
-                                              icon: const Icon(Icons.add))),
+                                        width: 40,
+                                        height: 40,
+                                        decoration: BoxDecoration(
+                                          border:
+                                              Border.all(color: Colors.black),
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                        child: IconButton(
+                                          padding: EdgeInsets.zero,
+                                          color: Colors.black,
+                                          onPressed: () {
+                                            provider.incrementquantity();
+                                          },
+                                          icon: const Icon(Icons.add),
+                                        ),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -258,16 +283,18 @@ class ProductDetailPage extends StatelessWidget {
                             Text(
                               'MATERIAL :',
                               style: Styles().normalS(
-                                  fontW: FontWeight.normal,
-                                  fontS: 17,
-                                  color: AppColors.black),
+                                fontW: FontWeight.normal,
+                                fontS: 17,
+                                color: AppColors.black,
+                              ),
                             ),
                             Text(
                               ' SAMPLE',
                               style: Styles().normalS(
-                                  fontW: FontWeight.w500,
-                                  fontS: 20,
-                                  color: AppColors.black),
+                                fontW: FontWeight.w500,
+                                fontS: 20,
+                                color: AppColors.black,
+                              ),
                             ),
                           ],
                         ),
@@ -277,9 +304,10 @@ class ProductDetailPage extends StatelessWidget {
                         Text(
                           'Description:',
                           style: Styles().normalS(
-                              fontW: FontWeight.normal,
-                              fontS: 18,
-                              color: AppColors.black),
+                            fontW: FontWeight.normal,
+                            fontS: 18,
+                            color: AppColors.black,
+                          ),
                         ),
                         const SizedBox(
                           height: 15,
@@ -287,9 +315,10 @@ class ProductDetailPage extends StatelessWidget {
                         Text(
                           'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled iining essentially unchanged. ',
                           style: Styles().normalS(
-                              fontW: FontWeight.normal,
-                              fontS: 16,
-                              color: AppColors.black),
+                            fontW: FontWeight.normal,
+                            fontS: 16,
+                            color: AppColors.black,
+                          ),
                           textDirection: TextDirection.ltr,
                           maxLines: 4,
                         ),
@@ -297,16 +326,19 @@ class ProductDetailPage extends StatelessWidget {
                           height: 30,
                         ),
                         SizedBox(
-                            width: w,
-                            child: Button().button(
-                                action: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Cart()),
-                                  );
-                                },
-                                txt: "ADD TO CART"))
+                          width: w,
+                          child: Button().button(
+                            action: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Cart(),
+                                ),
+                              );
+                            },
+                            txt: 'ADD TO CART',
+                          ),
+                        )
                       ],
                     ),
                   )
@@ -314,6 +346,8 @@ class ProductDetailPage extends StatelessWidget {
               ),
             ),
           );
-        }));
+        },
+      ),
+    );
   }
 }

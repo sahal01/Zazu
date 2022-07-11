@@ -12,10 +12,8 @@ class HomeProvider extends ChangeNotifier {
     'Item 5',
   ];
 
-  dropdown(String newValue){
-    dropdownvalue = newValue!;
+  dropdown(String newValue) {
+    dropdownvalue = newValue;
     notifyListeners();
   }
-
-
 }

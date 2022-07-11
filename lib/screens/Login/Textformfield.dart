@@ -1,19 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zazu/Providers/providers.dart';
 
-import '../../Providers/loginprovider/LoginProvider.dart';
 import 'InputDecoration.dart';
 import 'Validator.dart';
 
-class Textformfield {
-  textformfield(
-      {required TextEditingController controller,
-      required TextEditingController userpass,
-      required bool obs,
-      required String hint,
-      required String text}) {
-    return Consumer<LoginProvider>(builder: (context, provider, child) {
-      return TextFormField(
+class Textformfield extends ConsumerWidget {
+  const Textformfield({
+    required this.controller,
+    required this.userpass,
+    required this.obs,
+    required this.hint,
+    required this.text,
+    Key? key,
+  }) : super(key: key);
+
+  final TextEditingController controller;
+  final TextEditingController userpass;
+  final bool obs;
+  final String hint;
+  final String text;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Consumer(
+      builder: (_, ref, __) {
+        final data = ref.watch(loginProvider);
+        return TextFormField(
           controller: controller,
           obscureText: obs,
           textInputAction: TextInputAction.next,
@@ -21,19 +34,21 @@ class Textformfield {
           enableSuggestions: false,
           autocorrect: false,
           decoration: Inputdecoration().inputdecoration(
-              hint: hint,
-              password: () {
-                if (controller == userpass) {
-                  return IconButton(
-                      icon: Icon(provider.isObscure
-                          ? Icons.visibility_off
-                          : Icons.visibility),
-                      onPressed: () {
-                        provider.showpass();
-                      });
-                }
-              }),
-          validator: Validator().validator(text: text));
-    });
+            hint: hint,
+            password: () {
+              if (controller == userpass) {
+                return IconButton(
+                  icon: Icon(
+                    data.isObscure ? Icons.visibility_off : Icons.visibility,
+                  ),
+                  onPressed: data.showpass,
+                );
+              }
+            },
+          ),
+          validator: Validator().validator(text: text),
+        );
+      },
+    );
   }
 }
