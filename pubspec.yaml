@@ -39,7 +39,9 @@ dependencies:
   get:
   logger:
   flutter_riverpod: ^1.0.4
-
+  flutter_branch_sdk:
+  share_plus:
+  algolia:
 dev_dependencies:
   flutter_test:
     sdk: flutter

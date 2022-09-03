@@ -1,6 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_branch_sdk/flutter_branch_sdk.dart';
 import 'package:flutter_image_slider/carousel.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:zazu/screens/ProductDetailPage/rectangle.dart';
 import 'package:zazu/utils/Styles.dart';
 import '../../Providers/providers.dart';
@@ -11,6 +15,23 @@ import '../ProductViewImage/ProductViewImage.dart';
 
 class ProductDetailPage extends StatelessWidget {
   ProductDetailPage({Key? key}) : super(key: key);
+
+  BranchContentMetaData metadata = BranchContentMetaData();
+  StreamController<String> controllerUrl = StreamController<String>();
+
+  void generateLink(BranchUniversalObject buo, BranchLinkProperties lp,String title,BuildContext context) async {
+    BranchResponse response =
+    await FlutterBranchSdk.getShortUrl(buo: buo, linkProperties: lp);
+    if (response.success) {
+      print("PRODUCT GENERATED LINK : ${response.result}");
+      controllerUrl.sink.add('${response.result}');
+      final box = context.findRenderObject() as RenderBox;
+      Share.share('${title}\n${response.result}', subject: 'Share Product',sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size,);
+    } else {
+      controllerUrl.sink
+          .add('Error : ${response.errorCode} - ${response.errorMessage}');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,17 +54,59 @@ class ProductDetailPage extends StatelessWidget {
           ),
         ),
         actions: <Widget>[
-          IconButton(
-            icon: const Icon(
-              Icons.shopping_cart,
-              color: AppColors.black,
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Cart()),
-              );
-            },
+          Row(
+            children: [
+      IconButton(
+          onPressed: () {
+    BranchLinkProperties lp = BranchLinkProperties(
+    channel: 'facebook',
+    feature: 'sharing',
+    stage: 'new share',
+    campaign: 'xxxxx',
+    tags: ['one', 'two', 'three'],);
+    BranchUniversalObject bo;
+    bo = BranchUniversalObject(
+    canonicalIdentifier: 'flutter/branch',
+    canonicalUrl: 'https://nesto.shop/',
+    title: 'LADIES GOWN',
+    imageUrl:
+    'assets/images/img_2.png',
+    contentDescription:'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled iining essentially unchanged. ',
+    contentMetadata: BranchContentMetaData(),
+    // ..addCustomMetadata("item", "123"),
+    keywords: ['Plugin', 'Branch', 'Flutter'],
+    publiclyIndex: true,
+    locallyIndex: true,
+    expirationDateInMilliSec: DateTime.now()
+        .add(const Duration(days: 1000))
+        .millisecondsSinceEpoch,);
+    lp.addControlParam('\$uri_redirect_mode', '1');
+    return generateLink(bo, lp,'LADIES GOWN',context);
+    },
+        icon: const Icon(
+          Icons.share,
+          color: Colors.black,
+          size: 23,
+        ),
+      ),
+
+              IconButton(
+                icon: const Icon(
+                  Icons.shopping_cart,
+                  color: AppColors.black,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Cart()),
+                  );
+                },
+              ),
+
+
+
+
+            ],
           )
         ],
       ),

@@ -16,6 +16,24 @@
                  the Android process has started. This theme is visible to the user
                  while the Flutter UI initializes. After that, this theme continues
                  to determine the Window background behind the Flutter UI. -->
+
+            <!-- Branch URI Scheme -->
+            <intent-filter>
+                <data android:scheme="zazu" android:host="open"/>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <!-- Branch App Links -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="zazuindia.app.link" />
+                <data android:scheme="https" android:host="zazuindia-alternate.app.link" />
+
+            </intent-filter>
+
             <meta-data
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
@@ -30,5 +48,20 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+       <meta-data
+           android:name="io.branch.sdk.BranchKey"
+           android:value="key_live_gi5YlK9dPnkAO0idr19IEoobvwf8IfgX" />
+       <!-- For your test app, if you have one; Again, use your actual test Branch key -->
+       <meta-data
+           android:name="io.branch.sdk.BranchKey.test"
+           android:value="secret_live_kUYIWSNHBtRxi7j06XN9jHkJpK6NVejf" />
+       <meta-data android:name="io.branch.sdk.TestMode" android:value="false" />
+       <meta-data android:name="branch_enable_log"
+           android:value="true" />
+       <meta-data android:name="branch_enable_facebook_ads"
+           android:value="false" />
+
+
     </application>
 </manifest>

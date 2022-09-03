@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_branch_sdk/flutter_branch_sdk.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'screens/SplashScreen/splashscreen.dart';
 
-void main() => runApp(const ProviderScope(child: MyApp()));
+void main()async{
+  WidgetsFlutterBinding.ensureInitialized();
+   FlutterBranchSdk.validateSDKIntegration();
+  runApp(const ProviderScope(child: MyApp()));}
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
